@@ -77,16 +77,10 @@ WSGI_APPLICATION = 'Version1.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
-
 DATABASES = {
-    
-'default': {
-    'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    'NAME': 'movierecommender',
-    'USER': 'postgres',
-    'PASSWORD': '8s7f9191',
-    'HOST': 'localhost',
-    'PORT': '5432',
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'mydatabase',
     }
 }
 # Password validation
