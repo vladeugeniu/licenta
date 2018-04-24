@@ -12,12 +12,27 @@
                             <h4 class="modal-title" id="myModalLabel">Registration form</h4>
                         </div>
                         <div class="modal-body">
-                            <form class="pb-modalreglog-form-reg" id="regForm" >
+                            <form class="pb-modalreglog-form-reg" id="regForm" action="/signUp" method="post">
+                                {% csrf_token %}
                                 <div class="form-group">
                                     <label for="email">Email address</label>
                                     <div class="input-group pb-modalreglog-input-group">
                                         <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
                                         <input type="text" class="form-control" name="email" placeholder="Email"/>
+                                    </div>
+                                </div>
+                                 <div class="form-group">
+                                    <label for="first_name">First name</label>
+                                    <div class="input-group pb-modalreglog-input-group">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                                        <input type="text" class="form-control" name="first_name" placeholder="First Name"/>
+                                    </div>
+                                </div>
+                                 <div class="form-group">
+                                    <label for="last_name">Last Name</label>
+                                    <div class="input-group pb-modalreglog-input-group">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                                        <input type="text" class="form-control" name="last_name" placeholder="Last Name"/>
                                     </div>
                                 </div>
                                 <div class="form-group">

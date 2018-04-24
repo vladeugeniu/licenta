@@ -132,6 +132,27 @@ $(document).ready(function() {
                     //  }
                 }
             },
+
+            first_name: {
+               validators:{ notEmpty: {
+                        message: 'This field should be completed'
+                    },
+                  regexp: {
+                        regexp: /^[a-zA-Z]+.{3,24}$/i,
+                        message: "Please enter a real name"
+                    }
+                }
+            },
+            last_name: {
+               validators:{ notEmpty: {
+                        message: 'This field should be completed'
+                    },
+                  regexp: {
+                         regexp: /^[a-zA-Z]+.{3,24}$/i,
+                         message: "Please enter a real name"
+                    }
+                }
+            },
             password: {
 
                 validators: {
