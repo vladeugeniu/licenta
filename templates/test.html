@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/menu_bar.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'bstrap/bootstrap-3.3.7/dist/css/bootstrap.min.css' %}">
+    <script src="{% static 'bstrap/bootstrapvalidator-0.5.2/vendor/bootstrap/js/moment.min.js'%}"></script>
+    <script src="{% static 'bstrap/bootstrapvalidator-0.5.2/vendor/jquery/jquery-1.10.2.min.js'%}"></script>
+    <script src="{% static 'bstrap/bootstrapvalidator-0.5.2/vendor/bootstrap/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'bstrap/bootstrapvalidator-0.5.2/dist/js/bootstrapValidator.js'%}"></script>
+    <script src="{% static 'js/my_general_scripts.js'%}"></script>
+</head>
+<body>
+
+<form id="taskForm" method="post" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-xs-3 control-label">Task</label>
+        <div class="col-xs-5">
+            <input type="text" class="form-control" name="task" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-xs-3 control-label">Description</label>
+        <div class="col-xs-5">
+            <textarea class="form-control" name="description" rows="5"></textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-xs-5 col-xs-offset-3">
+            <!-- Initially, the submit button is disabled -->
+            <button type="submit" class="btn btn-default" disabled="disabled">Submit</button>
+        </div>
+    </div>
+</form>
+
+<script>
+$(document).ready(function() {
+    $('#taskForm')
+        .bootstrapValidator({
+        framework: 'bootstrap',
+        icon: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+              task: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The task is required'
+                        }
+                    }
+                },
+                description: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The description is required'
+                        }
+                    }
+                },
+            email: {
+                validators: {
+                    emailAddress: {
+                        message: 'The value is not a valid email address'
+                    },
+                    notEmpty: {
+                        message: 'This field should be completed'
+                    }
+
+                    // remote: {
+                    //      message: 'The username is not available',
+                    //      url: '/path/to/backend/',
+                    //      type: 'POST'
+                    //  }
+                }
+            },
+            password: {
+
+                validators: {
+                    regexp: {
+                        regexp: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[$@!%?&]).{6,12}$/i,
+                        message: 'Your password should contain at least 6 characters and maximum 12,' +
+                        'one number and one special character'
+                    },
+
+                    notEmpty: {
+                        message: 'This field should be completed'
+                    }
+                }
+            },
+            confirmPassword: {
+                validators: {
+                    identical: {
+                        field: 'password',
+                        message: 'The password and its confirm are not the same'
+                    },
+                    notEmpty: {
+                        message: 'This field should be completed'
+                    },
+                    regexp: {
+                        regexp: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[$@!%?&]).{6,12}$/i,
+                        message: ""
+                    },
+                }
+            },
+            birthday: {
+                validators:
+                    {
+                        notEmpty: {
+                            message: 'This field should be completed'
+                        },
+
+                        date: {
+                            format: 'MM/DD/YYYY',
+                            message: 'The date is not a valid'
+                        },
+
+                        callback: {
+                            message: 'You are too young or you are just messing with the dates, which also means that young are too young :)',
+                            callback: function (value, validator) {
+
+                                var m = new moment(value, 'YYYY/MM/DD');
+
+                                if (!m.isValid()) {
+                                    return false;
+                                }
+
+                                return m.isAfter('1940/01/01') && m.isBefore('2005/01/01');
+                            }
+                        }
+                    }
+            }
+        }
+    })
+        .on('success.field.fv', function(e, data) {
+            console.log("keplm");
+            if (data.fv.getInvalidFields().length > 0) {    // There is invalid field
+                data.fv.disableSubmitButtons(true);
+            }
+        });
+});
+</script>
+
+</body>
+</html>
