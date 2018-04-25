@@ -126,6 +126,11 @@ USE_TZ = True
 SOCIAL_AUTH_FACEBOOK_KEY = '583931798648978'  # App ID
 SOCIAL_AUTH_FACEBOOK_SECRET = 'ba4b995c379e09dae855df45535274d4'  # App Secret
 
+
+SOCIAL_AUTH_TWITTER_KEY = 'eDCm26X7fo2KbuQNN3P32XqTt'
+SOCIAL_AUTH_TWITTER_SECRET = '	3v8S6GpxIvO6u9SCDrWaM2yuvM76ADNg1DCRIQo1azrYHgU90'
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
