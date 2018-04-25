@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'Version1.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'home/moonth/licenta/mydatabase',
+        'NAME': 'licenta/mydatabase',
     }
 }
 # Password validation
