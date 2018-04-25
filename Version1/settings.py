@@ -123,8 +123,8 @@ USE_L10N = True
 
 USE_TZ = True
 
-SOCIAL_AUTH_FACEBOOK_KEY = '228952634524799'  # App ID
-SOCIAL_AUTH_FACEBOOK_SECRET = 'dfec7d4567c5bd84240f6a4b538c7da9'  # App Secret
+SOCIAL_AUTH_FACEBOOK_KEY = '583931798648978'  # App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = 'ba4b995c379e09dae855df45535274d4'  # App Secret
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
